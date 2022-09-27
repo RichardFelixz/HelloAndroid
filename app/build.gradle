@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.github.triplet.play'
+    id 'com.google.firebase.appdistribution'
 }
 
 def keystorePropertiesFile = rootProject.file("app/keystore.properties")
@@ -15,7 +16,7 @@ android {
         applicationId "br.com.rw.helloandroid"
         minSdk 23
         targetSdk 32
-        versionCode 2
+        versionCode 4
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -36,6 +37,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             signingConfig signingConfigs.release
+
+            firebaseAppDistribution {
+                appId="1:113435397472:android:384995d532a7568394a205"
+                releaseNotesFile="app/releasenotes.txt"
+                groups="Teste"
+                serviceCredentialsFile="app/service-account-firebasedist.json"
+            }
         }
     }
     compileOptions {
